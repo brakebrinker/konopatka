@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="template">
+	<name>JA_Uvite</name>
+	<creationDate>20 Nov 08</creationDate>
+	<author>JoomlArt.com</author>
+	<copyright>JoomlArt Design Team</copyright>
+	<authorEmail>webmaster@joomlart.com</authorEmail>
+	<authorUrl>www.joomlart.com</authorUrl>
+	<version>1.0.0</version>
+	<description>JA Uvite - 2nd Nov 08 JA Teamplate Club</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>ja_templatetools_1.5.php</filename>
+		<filename>ja_vars_1.5.php</filename>
+		<filename>params.ini</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>ja_menus</folder>
+		<folder>css</folder>
+		<folder>js</folder>
+	</files>
+	<languages>
+		<language tag="en-GB">en-GB.tpl_ja_uvite.ini</language>
+	</languages>
+	<administration>
+    	<languages>
+			<language tag="en-GB">admin/en-GB.tpl_ja_uvite.ini</language>
+		</languages>
+    </administration>
+
+	<positions>
+		<position>hornav</position>
+		<position>breadcrumbs</position>
+		<position>banner</position>
+		<position>left</position>
+		<position>right</position>
+		<position>top</position>
+		<position>ja-news</position>
+		<position>ja-tabs</position>
+		<position>topsl</position>
+		<position>user1</position>
+		<position>user2</position>
+		<position>user3</position>
+		<position>user4</position>
+		<position>user5</position>
+		<position>user6</position>
+		<position>user7</position>
+		<position>user8</position>
+		<position>user9</position>
+		<position>footer</position>
+		<position>syndicate</position>
+		<position>debug</position>
+	</positions>
+
+	<params>
+		<param name="logoType" type="list" default="image" label="Logo type" description="LOGO TYPE DESCRIPTION">
+			<option value="image">Image</option>
+			<option value="text">Text</option>
+		</param>
+		<param name="logoText" type="text" default="" size="50" label="Logo text" description="LOGO TEXT DESCRIPTION" />
+		<param name="sloganText" type="text" default="" size="50" label="Slogan" description="SLOGAN DESCRIPTION" />
+
+		<param name="ja_font" type="list" default="3" label="Font size" description="FONT SIZE DESCRIPTION">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+		</param>
+
+		<param name="ja_screen" type="list" default="950" label="Template Width" description="TEMPLATE WIDTH DESCRIPTION">
+			<option value="narrow">Narrow Screen</option>
+			<option value="wide">Wide Screen</option>
+		</param>
+		
+		<param name="ja_color" type="list" default="default" label="Color Variation" description="Color variation to use">
+			<option value="default">Default</option>
+			<option value="blue">Blue</option>
+			<option value="violet">Violet</option>
+		</param>
+
+		<param name="usertool_font" type="list" default="0" label="Show Font tools" description="Display Font tools">
+		  <option value="0">No</option>
+		  <option value="2">Yes</option>
+		</param>
+		
+		<param name="usertool_color" type="list" default="0" label="Show Color tools" description="Display Color tools">
+		  <option value="0">No</option>
+		  <option value="4">Yes</option>
+		</param>
+
+		<param name="rounded_style" type="list" default="1" label="Enable rounded style" description="Rounded style for block. Not applicant for IE6">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+		<param name="janews-dateformat" type="text" default="d M Y" label="Date format" description="Date format" />
+		<param name="menutype" type="menu" default="mainmenu" label="Menu Type" description="MENU TYPE DESCRIPTION" />
+		<param name="ja_menu" type="list" default="2" label="Menu Module" description="MENU'S TYPE">
+		  <option value="none">Disable</option>
+		  <option value="split">Split Menu</option>
+		  <option value="css">CSS Menu</option>
+		  <option value="moo">Moo Menu</option>
+		</param>
+
+	</params>
+</install>

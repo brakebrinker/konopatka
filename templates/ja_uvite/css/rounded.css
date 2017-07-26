@@ -1,0 +1,72 @@
+ /*------------------------------------------------------------------------
+# JA Uvite for joomla 1.5 - Version 1.0 - Licence Owner JA108425
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2008 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+# This file may not be redistributed in whole or significant part.
+-------------------------------------------------------------------------*/
+
+/* Rounded Box CSS for Uvite (by Hieu Nguyen) */
+/* Reset margin for rounded elements */
+.jazin-box, #jazin-hlwrap, div.moduletable, div.moduletable_menu, div.moduletable_text {
+	margin: 0;
+}
+
+/* Recalculate padding for rounded elements */
+.jazin-box, #jazin-hlwrap .jazin-content, #ja-current-content, div.moduletable, div.moduletable_menu, div.moduletable_text {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+/* Re-Apply margin */
+#jazin-fp .jarounded  {
+	margin-bottom: 10px;
+}
+
+#jazin-wrap .jarounded {
+	margin: 10px 10px 20px;
+}
+
+#jazin-wrap .jazin-left .jarounded {
+	margin-left: 0;
+}
+
+#jazin-wrap .jazin-right .jarounded {
+	margin-right: 0;
+}
+
+#ja-colwrap .jarounded {
+	margin-bottom: 20px;
+}
+
+/* Styling */
+.jarounded .top, .jarounded .bot {
+	height: 5px;
+	display: block;
+	position: relative;
+	margin: 0 5px;
+	background: url(../images/trans-bg1.png);
+}
+
+.jarounded .top .tl, .jarounded .top .tr, .jarounded .bot .bl, .jarounded .bot .br {
+	height: 5px;
+	width: 5px;
+	position: absolute;
+	line-height: 5px;
+}
+
+.jarounded .top .tl, .jarounded .bot .bl {
+	top: 0; left: -5px;
+}
+
+.jarounded .top .tr, .jarounded .bot .br {
+	top: 0; right: -5px;
+}
+
+.jarounded .top .tl {background: url(../images/corner-tl.png);}
+.jarounded .top .tr {background: url(../images/corner-tr.png);}
+
+.jarounded .bot .bl {background: url(../images/corner-bl.png);}
+.jarounded .bot .br {background: url(../images/corner-br.png);}
