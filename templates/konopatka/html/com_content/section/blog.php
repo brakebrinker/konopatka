@@ -24,10 +24,9 @@ $cparams =& JComponentHelper::getParams('com_media');
 </h1>
 
 <?php endif; ?>
-<table class="blog<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>" cellpadding="0" cellspacing="0">
+
 <?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) :?>
-<tr>
-	<td valign="top">
+
 	<?php if ($this->params->get('show_description_image') && $this->section->image) : ?>
 		<img src="<?php echo $this->baseurl . '/' . $cparams->get('image_path') . '/'. $this->section->image;?>" align="<?php echo $this->section->image_position;?>" hspace="6" alt="" />
 	<?php endif; ?>
@@ -109,4 +108,3 @@ if (($numIntroArticles != $startIntroArticles) && ($i < $this->total)) : ?>
 	</td>
 </tr>
 <?php endif; ?>
-</table>

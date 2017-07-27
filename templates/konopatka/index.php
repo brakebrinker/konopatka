@@ -133,30 +133,12 @@ function changeSizeImage(im) {
                 <jdoc:include type="modules" name="asidemenu" />
             </nav>
             <div>
-                <div class="preview">
-                    <img src="img/video.jpeg" alt="">
-                    <span>10.06.2017</span>
-                    <h4>Компания «Дом Мастер» </h4>
-                    <p>специализируется на завершающем этапе возведения деревянных домов.</p>
-                </div>
-                <div class="preview">
-                    <img src="img/video.jpeg" alt="">
-                    <span>10.06.2017</span>
-                    <h4>Компания «Дом Мастер» </h4>
-                    <p>специализируется на завершающем этапе возведения деревянных домов.</p>
-                </div>
-                <div class="preview">
-                    <img src="img/video.jpeg" alt="">
-                    <span>10.06.2017</span>
-                    <h4>Компания «Дом Мастер» </h4>
-                    <p>специализируется на завершающем этапе возведения деревянных домов.</p>
-                </div>
+                <jdoc:include type="modules" name="asidevideo" />
             </div>
         </aside>
-
-        <section>
+        <main>
             <jdoc:include type="component" />
-        </section>
+        </main>
     </div>
 
 <!-- BEGIN: HEADER -->
