@@ -18,12 +18,12 @@
 defined('_JEXEC') or die('Restricted access');
 $cparams =& JComponentHelper::getParams('com_media');
 ?>
-<?php if ($this->params->get('show_page_title')) : ?>
+<!-- <?php if ($this->params->get('show_page_title')) : ?>
 <h1 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx'));?>">
 	<?php echo $this->escape($this->params->get('page_title')); ?>
 </h1>
 
-<?php endif; ?>
+<?php endif; ?> -->
 
 <?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) :?>
 

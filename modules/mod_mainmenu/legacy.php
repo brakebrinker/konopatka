@@ -377,9 +377,10 @@ function mosShowHFMenu(& $params, $style = 0)
 				$spacer_start = $params->get('spacer');
 				$spacer_end = $params->get('end_spacer');
 
-				echo '<table width="100%" border="0" cellpadding="0" cellspacing="1">';
+/*				echo '<table width="100%" border="0" cellpadding="0" cellspacing="1">';
 				echo '<tr>';
-				echo '<td nowrap="nowrap">';
+				echo '<td nowrap="nowrap">';*/
+				echo '<nav>';
 
 				if ($spacer_end) {
 					echo '<span class="' . $menuclass . '"> ' . $spacer_end . ' </span>';
@@ -396,9 +397,7 @@ function mosShowHFMenu(& $params, $style = 0)
 					echo '<span class="' . $menuclass . '"> ' . $spacer_end . ' </span>';
 				}
 
-				echo '</td>';
-				echo '</tr>';
-				echo '</table>';
+				echo '</nav>';
 				break;
 		}
 	}

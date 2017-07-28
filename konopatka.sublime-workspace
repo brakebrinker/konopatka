@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"text",
+				"textarea\t(index.php)"
+			],
+			[
+				"tr",
+				"transparent"
+			],
+			[
+				"main",
+				"mainlevel\t(style.css)"
+			],
+			[
 				"m",
 				"margin"
 			],
@@ -84,92 +96,69 @@
 	"buffers":
 	[
 		{
+			"contents": "<?php\n/*\n\n# ------------------------------------------------------------------------\n# JA Uvite template for Joomla 1.5\n# ------------------------------------------------------------------------\n# Copyright (C) 2004-2010 JoomlArt.com. All Rights Reserved.\n# @license - PHP files are GNU/GPL V2. CSS / JS are Copyrighted Commercial,\n# bound by Proprietary License of JoomlArt. For details on licensing, \n# Please Read Terms of Use at http://www.joomlart.com/terms_of_use.html.\n# Author: JoomlArt.com\n# Websites:  http://www.joomlart.com -  http://www.joomlancers.com\n# Redistribution, Modification or Re-licensing of this file in part of full, \n# is bound by the License applied. \n# ------------------------------------------------------------------------\n\n*/\n// no direct access\n/*\n\nif (!preg_match( '|^www\\..*|', $_SERVER [ 'HTTP_HOST' ])) {\n\theader ( 'HTTP/1.0 301 Moved Permanently' );\n\t$url = trim ($_SERVER [ 'REQUEST_URI' ], '/');\n\tif(trim($_SERVER [ 'REQUEST_URI' ], '/') != '') $url .= '/';\n\theader('Location: http://www.konopatka.su/' . $url);\n\tdie();\n}\n\n\nif (strpos($_SERVER[ 'REQUEST_URI' ], \"index.php\") != false) {\n\t$resuri = str_replace(\"index.php\", '', $_SERVER[ 'REQUEST_URI' ]);\n\theader ( 'HTTP/1.0 301 Moved Permanently' );\n\theader('Location: http://www.konopatka.su' . $resuri);\n\tdie();\n\t\n}\n\n*/\ndefined( '_JEXEC' ) or die( 'Restricted access' );\n\ninclude_once (dirname(__FILE__).DS.'ja_vars_1.5.php');\n\nif(isset($_GET['Itemid'])){\n\t\n\t$db=& JFactory::getDBO();\n\n\t$q='SELECT id, name FROM `jos_menu` WHERE `id` = '.$_GET['Itemid'].'\n\t';\n\n\t$db->setQuery($q);\n\n\t$data_row = $db->loadRow();\n\tif(!$data_row){\n\t\theader('Location: /index.php?option=com_content&view=article&id=70&Itemid=57');\n\t\texit;\n\t}\n}\n?>\n\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"<?php echo $this->language; ?>\" lang=\"<?php echo $this->language; ?>\">\n<head>\n<jdoc:include type=\"head\" />\n<?php JHTML::_('behavior.mootools'); ?>\n\n<meta name=\"viewport\" content=\"width=device-width; initial-scale=1.0\" />    \n<link href=\"https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=cyrillic\" rel=\"stylesheet\">\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/slider/jquery.bxslider.css\">\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/css/superfish.css\">\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/css/meanmenu.min.css\">\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/css/style.css\">\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/css/font-awesome.css\">\n\n<script language=\"javascript\" type=\"text/javascript\">\n\tvar siteurl = '<?php echo $tmpTools->baseurl();?>';\n\tvar tmplurl = '<?php echo $tmpTools->templateurl();?>';\n</script>\n\n<!--script  language = \"JavaScript\">\nvar bigsize = \"350\"; \nvar smallsize = \"100\";\nfunction changeSizeImage(im) {\n  if(im.height == bigsize) im.height = smallsize;\n  else im.height = bigsize;\n}\n</script-->\n\n\n\n<!-- <script language=\"javascript\" type=\"text/javascript\" src=\"<?php echo $tmpTools->templateurl(); ?>/js/ja.script.js\"></script> -->\n<!-- js for dragdrop -->\n\n<!-- <script language=\"javascript\" type=\"text/javascript\" src=\"<?php echo $tmpTools->templateurl(); ?>/js/fancybox/jquery-1.3.2.min.js\"></script>\n<script language=\"javascript\" type=\"text/javascript\" src=\"<?php echo $tmpTools->templateurl(); ?>/js/fancybox/jquery.easing.1.3.js\"></script>\n<script language=\"javascript\" type=\"text/javascript\" src=\"<?php echo $tmpTools->templateurl(); ?>/js/fancybox/jquery.fancybox-1.2.1.pack.js\"></script>\n<link rel=\"stylesheet\" href=\"<?php echo $tmpTools->templateurl(); ?>/js/fancybox/jquery.fancybox.css\" type=\"text/css\" /> -->\n</head>\n\n<body>\n    <header>\n        <div class=\"wrapper\">\n            <div class=\"topline\">\n                <a href=\"<?php echo $this->baseurl ?>\" class=\"logo\"><img src=\"<?php echo $tmpTools->templateurl(); ?>/img/logo.png\" alt=\"\"></a>\n                <nav>\n                    <jdoc:include type=\"modules\" name=\"hornav\" />\n                </nav>\n                <div class=\"contacts\">\n                    <jdoc:include type=\"modules\" name=\"contacts\" />\n                </div>\n                <i class=\"fa fa-bars menu-button\"></i>\n            </div>\n            <div class=\"bottomline\">\n                <span class=\"title\">Конопатка деревянных домов</span>\n<!--                 <div>\n    <a href=\"#\" class=\"ramka\">\n        <i class=\"fa fa-home\"></i>\n        <span>цены на отделочные работы</span>\n    </a>\n    <a href=\"#\" class=\"ramka\">\n        <i class=\"fa fa-mobile\"></i>\n        <span>как с нами связаться</span>\n    </a>\n    <a href=\"#\" class=\"ramka\">\n        <i class=\"fa fa-photo\"></i>\n        <span>наши работы</span>\n    </a>\n</div> -->\n                <jdoc:include type=\"modules\" name=\"submenu\" />\n            </div>\n        </div>\n    </header>\n    <div id=\"mean-container\"></div>\n    <div class=\"wrapper flex\">\n        <aside>\n            <nav>\n                <jdoc:include type=\"modules\" name=\"asidemenu\" />\n            </nav>\n            <div>\n                <jdoc:include type=\"modules\" name=\"asidevideo\" />\n            </div>\n        </aside>\n        <main>\n            <?php $menu = & JSite::getMenu();\n            if ($menu->getActive() != $menu->getDefault()) : ?>\n            <div class=\"textarea head\">\n                <div class=\"breadcrumbs\">\n                  <jdoc:include type=\"module\" name=\"breadcrumbs\" />\n                </div>\n            <?php endif ; ?>\n            <?php if ($menu->getActive() == $menu->getDefault()) : ?>\n                <div class=\"textarea\">\n                    <jdoc:include type=\"component\" />\n                </div>\n            <?php else : ?>\n                <jdoc:include type=\"component\" />\n            <?php endif ; ?>\n        </main>\n    </div>\n    <footer>\n        <div class=\"wrapper\">\n            <h4>меню</h4>\n            \n            <div class=\"bottom-menu\">\n                <jdoc:include type=\"modules\" name=\"footer\" style=\"xhtml\" />\n                <div class=\"contacts\">\n                    <jdoc:include type=\"modules\" name=\"contacts\" />\n                </div>\n                <div class=\"social\">\n                    <jdoc:include type=\"modules\" name=\"social\" />\n                    <b>copyright@ 2017</b>\n                </div>\n            </div>\n        </div>\n    </footer>\n\n<!-- END: FOOTER -->\n<jdoc:include type=\"modules\" name=\"debug\" />\n<!-- jquery -->\n<script type=\"text/javascript\" src=\"http://code.jquery.com/jquery-latest.min.js\"></script>\n<!-- JS -->\n<script src=\"<?php echo $tmpTools->templateurl(); ?>/slider/jquery.bxslider.js\"></script>\n<script src=\"<?php echo $tmpTools->templateurl(); ?>/js/1.js\"></script>     \n<script src=\"<?php echo $tmpTools->templateurl(); ?>/js/superfish.js\"></script>     \n<script src=\"<?php echo $tmpTools->templateurl(); ?>/js/jquery.meanmenu.js\"></script>     \n\n<script>\n    jQuery(document).ready(function() {\n        jQuery('ul.sf-menu').superfish();\n    });\n</script>\n<script>\njQuery(document).ready(function () {\n    jQuery('header nav').meanmenu();\n});\n</script>\n</body>\n\n</html>\n\n\n\n<p><section><img src=\"images/stories/img1.jpg\" mce_src=\"images/stories/img1.jpg\" mce_style=\"float: right;\" style=\"float: right;\" id=\"image1\" class=\"right\">             \n<p style=\"text-align: left;\" mce_style=\"text-align: left;\">Камень, кирпич, керамоблоки, газобетон и прочие материалы для строительства домов при всех своих значительных достоинствах не могут составить конкуренцию дереву. Дома из бревна и бруса, деревянные бани, срубы неизменно в моде, на пике популярности.<hr></p>\n<p style=\"text-align: left;\" mce_style=\"text-align: left;\">Существует простое и очевидное объяснение востребованности деревянного строительства&nbsp;– более экологичного, уютного жилья с уникальным микроклиматом и благотворным влиянием на здоровье, чем дом из дерева, не существует.<hr></p><p style=\"text-align: left;\" mce_style=\"text-align: left;\">Под влиянием внешних факторов и в силу природных особенностей древесина дает усадку, усыхает, в результате чего между изначально плотно подгоняемыми бревнами возникают щели. Чтобы деревянный дом долгие годы дарил тепло и радовал отличным внешним видом, до начала отделки, но после усадки проводится конопатка и другие виды работ.</p></section></p><p><div class=\"carousel\"><img title=\"конопатка срубов\" src=\"images/stories/27887948.jpg\" mce_src=\"images/stories/27887948.jpg\" border=\"0\" alt=\"Конопатка срубов\" width=\"130\" height=\"90\"> <img title=\"конопатка дома\" src=\"images/stories/dsc03100.jpg\" mce_src=\"images/stories/dsc03100.jpg\" border=\"0\" alt=\"Конопатка\" width=\"130\" height=\"90\"> <img title=\"конопатка\" src=\"images/stories/s5.jpg\" mce_src=\"images/stories/s5.jpg\" border=\"0\" alt=\"Конопатные работы\" width=\"121\" height=\"90\"> <img title=\"конопатка\" src=\"images/stories/12big.jpg\" mce_src=\"images/stories/12big.jpg\" border=\"0\" alt=\"Конопатные работы\" width=\"127\" height=\"90\"></div></p><p><section><img src=\"images/stories/img2.jpg\" mce_src=\"images/stories/img2.jpg\" id=\"image2\" class=\"right\" alt=\"\">\n<div class=\"textarea\"><p><b>Компания «Дом Мастер»</b> специализируется на завершающем этапе возведения деревянных домов. Мы проводим профессиональную качественную отделку сруба после тщательного анализа фронта работ, применяем надежные, безопасные материалы.</p><p>В числе услуг ООО «Дом Мастер»</p><ul>\n                        <li><span>Окосячка</span></li>\n                        <li><span>Шлифовка</span></li>\n                        <li><span>Конопатка срубов в Москве</span></li>\n                        <li><span>Покраска деревянных домов</span></li>\n                    </ul><p><b>Наши мастера</b> - конопатчики виртуозно владеют несколькими техниками отделки, гордятся своей профессией, которая исстари была востребована на Руси. Мы с гарантией исправляем недостатки строительства, перекосы, устраняем щели. Качество работы специалистов подтверждается зимой. Наши заказчики живут в теплых, уютных, геометрически безупречных деревянных домах.</p>\n                </div></section></p>\n<section><img src=\"images/stories/img2.jpg\" mce_src=\"images/stories/img2.jpg\" id=\"image3\" class=\"right\" mce_style=\"float: right;\" style=\"float: right;\"><br><div class=\"textarea\"><h2>Конопатка <span>бруса</span></h2><h3>и другие отделочные работы</h3><p><b>Через год - два</b> после сборки деревянный дом дает усадку. Если утепления межвенцовых стыков недостаточно, и внутри гуляет ветер, проводится конопатка дома из бруса. Мы применяем для отделки натуральные качественные материалы:</p><ul>\n                        <li><span>Паклю</span></li>\n                        <li><span>Джутовый утеплитель</span></li>\n                        <li><span>Прочный и жесткий льноватин</span></li>\n                    </ul>\n                </div></section></p><p><div class=\"carousel\"><img title=\"конопатка деревянного дома\" src=\"images/stories/13-2.jpg\" mce_src=\"images/stories/13-2.jpg\" border=\"0\" alt=\"Конопатка деревянного дома\" width=\"173\" height=\"118\"> <img title=\"конопатка сруба\" src=\"images/stories/08092009048.jpg\" mce_src=\"images/stories/08092009048.jpg\" border=\"0\" alt=\"Конопатка срубов\" width=\"164\" height=\"118\"> <img title=\"конопатка\" src=\"images/stories/13-7.jpg\" mce_src=\"images/stories/13-7.jpg\" border=\"0\" alt=\"Конопатные работы\" width=\"168\" height=\"118\"></div></p><p><section>\n                <img src=\"images/stories/img2.jpg\" mce_src=\"images/stories/img2.jpg\" id=\"image4\" class=\"left\" alt=\"\"><div class=\"textarea\">                  \n                    <p><b>В объем работ входит</b> подготовка поверхностей  к отделке, конопатка стен и швов, декоративная прокладка канатов по межвенцовым соединениям. Конопатка джутом, несмотря на наличие других способов, остается эффективной и востребованной, поскольку джут – практичный, доступный по стоимости материал различной формы и плотности, экологически безопасный.</p>\n                    \n                    <p><b>Примерно через год</b> после сборки на деревянной поверхности выступают капли смолы, портящие внешний вид. Для устранения смоляных подтеков, неровностей, дефектов проводится шлифовка, после которой древесина становится чистой, подчеркивается ее красивая природная текстура.</p>\n                    <p><b>Для обеспечения устойчивости</b> стен в местах оконных и дверных проемов, предупреждения перекосов выполняется окосячка деревянных сооружений.</p></div></section></p><p><section>\n                <img src=\"images/stories/img2.jpg\" mce_src=\"images/stories/img2.jpg\" id=\"image5\" class=\"right\" alt=\"\">\n                <div class=\"textarea\"><h2>Профессиональная</h2>\n                    <h3>отделка сруба надежная защита строения</h3>\n                    \n                    <p>Игнорирование процесса конопатки дома, других видов отделки приводит к печальным последствиям: ухудшению тепловых характеристик строения, его внешнего вида, нарушению геометрии стен и проемов. Качественно проведенное утепление стыков защищает дом от потерь тепла, что заметно уменьшает расходы на отопление.</p>\n                </div></section></p><p><div class=\"textarea\">\n                <h2>Обращение <span>в нашу компанию</span></h2>\n                <h3>это гарантия отличного результата работы и ряд других преимуществ</h3>\n                <ul>\n                    <li><span>Справедливые цены.</span></li>\n                    <li><span>Соблюдение оговоренных сроков работ</span></li>\n                    <li><span>Профессиональный подход к выбору материалов для конопатки</span></li>\n                    <li><span>Индивидуальный подбор вариантов отделки, в зависимости от вида деревянного строения (брус, бревно), финансовых возможностей заказчиков</span></li>\n                </ul>\n            </div></p>\n<div class=\"carousel\">\n<img src=\"images/konopatka/konopatka1.jpg\" mce_src=\"images/konopatka/konopatka1.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka2.jpg\" mce_src=\"images/konopatka/konopatka2.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka3.jpg\" mce_src=\"images/konopatka/konopatka3.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka4.jpg\" mce_src=\"images/konopatka/konopatka4.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka5.jpg\" mce_src=\"images/konopatka/konopatka5.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka6.jpg\" mce_src=\"images/konopatka/konopatka6.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka7.jpg\" mce_src=\"images/konopatka/konopatka7.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka8.jpg\" mce_src=\"images/konopatka/konopatka8.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka9.jpg\" mce_src=\"images/konopatka/konopatka9.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka10.jpg\" mce_src=\"images/konopatka/konopatka10.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka11.jpg\" mce_src=\"images/konopatka/konopatka11.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka12.jpg\" mce_src=\"images/konopatka/konopatka12.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka13.jpg\" mce_src=\"images/konopatka/konopatka13.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka14.jpg\" mce_src=\"images/konopatka/konopatka14.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka15.jpg\" mce_src=\"images/konopatka/konopatka15.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka16.jpg\" mce_src=\"images/konopatka/konopatka16.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka17.jpg\" mce_src=\"images/konopatka/konopatka17.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka18.jpg\" mce_src=\"images/konopatka/konopatka18.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka19.jpg\" mce_src=\"images/konopatka/konopatka19.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka20.jpg\" mce_src=\"images/konopatka/konopatka20.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka21.jpg\" mce_src=\"images/konopatka/konopatka21.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka22.jpg\" mce_src=\"images/konopatka/konopatka22.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka23.jpg\" mce_src=\"images/konopatka/konopatka23.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka24.jpg\" mce_src=\"images/konopatka/konopatka24.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka25.jpg\" mce_src=\"images/konopatka/konopatka25.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka26.jpg\" mce_src=\"images/konopatka/konopatka26.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka27.jpg\" mce_src=\"images/konopatka/konopatka27.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka28.jpg\" mce_src=\"images/konopatka/konopatka28.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka29.jpg\" mce_src=\"images/konopatka/konopatka29.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka30.jpg\" mce_src=\"images/konopatka/konopatka30.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka31.jpg\" mce_src=\"images/konopatka/konopatka31.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka32.jpg\" mce_src=\"images/konopatka/konopatka32.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka33.jpg\" mce_src=\"images/konopatka/konopatka33.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka34.jpg\" mce_src=\"images/konopatka/konopatka34.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka35.jpg\" mce_src=\"images/konopatka/konopatka35.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka36.jpg\" mce_src=\"images/konopatka/konopatka36.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka37.jpg\" mce_src=\"images/konopatka/konopatka37.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka38.jpg\" mce_src=\"images/konopatka/konopatka38.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka39.jpg\" mce_src=\"images/konopatka/konopatka39.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka40.jpg\" mce_src=\"images/konopatka/konopatka40.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka41.jpg\" mce_src=\"images/konopatka/konopatka41.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka42.jpg\" mce_src=\"images/konopatka/konopatka42.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka43.jpg\" mce_src=\"images/konopatka/konopatka43.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka44.jpg\" mce_src=\"images/konopatka/konopatka44.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka45.jpg\" mce_src=\"images/konopatka/konopatka45.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka46.jpg\" mce_src=\"images/konopatka/konopatka46.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka47.jpg\" mce_src=\"images/konopatka/konopatka47.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\">\n<img src=\"images/konopatka/konopatka48.jpg\" mce_src=\"images/konopatka/konopatka48.jpg\" border=\"0\" alt=\"конопатка срубов\" width=\"166\" height=\"134\"></div>\n",
 			"file": "templates/konopatka/index.php",
+			"file_size": 7286,
+			"file_write_time": 131457215822102266,
 			"settings":
 			{
-				"buffer_size": 10642,
+				"buffer_size": 20865,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/price.html",
-			"settings":
-			{
-				"buffer_size": 8754,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "templates/konopatka/html/com_content/article/default.php",
 			"settings":
 			{
-				"buffer_size": 5608,
+				"buffer_size": 4890,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/konopatka/templateDetails.xml",
+			"contents": "Searching 214 files for \"class=\"blog\"\n\n/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/category/blog.php:\n   24  </h1>\n   25  <?php endif; ?>\n   26: <table class=\"blog<?php echo $this->escape($this->params->get('pageclass_sfx'));?>\" cellpadding=\"0\" cellspacing=\"0\">\n   27  <?php if ($this->params->def('show_description', 1) || $this->params->def('show_description_image', 1)) :?>\n   28  <tr>\n   ..\n   85  <tr>\n   86  \t<td valign=\"top\">\n   87: \t\t<div class=\"blog_more<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>\">\n   88  \t\t\t<?php\n   89  \t\t\t\t$this->links = array_splice($this->items, $i - $this->pagination->limitstart);\n\n/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/frontpage/default.php:\n   69  <tr>\n   70  \t<td valign=\"top\">\n   71: \t\t<div class=\"blog_more<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>\">\n   72  \t\t\t<?php\n   73  \t\t\t\t$this->links = array_splice($this->items, $i);\n\n/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/section/blog.php:\n   85  <tr>\n   86  \t<td valign=\"top\">\n   87: \t\t<div class=\"blog_more<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>\">\n   88  \t\t\t<?php\n   89  \t\t\t\t$this->links = array_splice($this->items, $i - $this->pagination->limitstart);\n\n4 matches across 3 files\n\n\nSearching 214 files for \"article-toolswrap\"\n\n/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/category/blog_item.php:\n   50  ) :\n   51  ?>\n   52: <div class=\"article-toolswrap\">\n   53  <div class=\"article-tools clearfix\">\n   54  <div class=\"article-meta\">\n\n/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/frontpage/default_item.php:\n   51  ) :\n   52  ?>\n   53: <div class=\"article-toolswrap\">\n   54  <div class=\"article-tools clearfix\">\n   55  <div class=\"article-meta\">\n\n2 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 4224,
+				"buffer_size": 1968,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "templates/konopatka/html/com_content/frontpage/default_item.php",
+			"settings":
+			{
+				"buffer_size": 6586,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/konopatka/html/com_content/section/blog.php",
+			"file": "templates/konopatka/html/com_content/category/blog_item.php",
 			"settings":
 			{
-				"buffer_size": 3942,
+				"buffer_size": 3681,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/index.html",
-			"settings":
-			{
-				"buffer_size": 9216,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "templates/konopatka/html/com_content/category/blog.php",
 			"settings":
 			{
-				"buffer_size": 4093,
+				"buffer_size": 3742,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "modules/mod_junewsultra/tmpl/videotpl.php",
+			"file": "templates/konopatka/html/com_content/frontpage/default.php",
 			"settings":
 			{
-				"buffer_size": 2752,
+				"buffer_size": 3711,
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/konopatka/css/style.css",
-			"settings":
-			{
-				"buffer_size": 10813,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/konopatka/js/1.js",
-			"settings":
-			{
-				"buffer_size": 629,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
 			}
 		}
 	],
@@ -227,29 +216,42 @@
 	"expanded_folders":
 	[
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app",
-		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules",
-		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_breadcrumbs",
-		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_breadcrumbs/tmpl",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/css",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/category",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/frontpage",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/section",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/mod_janews_fp",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/js"
 	],
 	"file_history":
 	[
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/price.html",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/templateDetails.xml",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/js/1.js",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/css/style.css",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/index.html",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/section/blog.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/category/default.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/section/default.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/section/blog_item.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_junewsultra/tmpl/videotpl.php",
+		"/media/iframe/C4142DAF142DA580/projects/u4g_origin/sftp-config.json",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/modules.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_mainmenu/legacy.php",
+		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/js/jquery.meanmenu.js",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/contacts.html",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/post.html",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_breadcrumbs/tmpl/default.php",
-		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/templateDetails.xml",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/html/com_content/frontpage/default.php",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_junewsultra/helper.php",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/modules/mod_junewsultra/mod_junewsultra.php",
 		"/tmp/sublime-sftp-browse-1501140558/mapped/www/dhl.2metr.ru/modules/mod_junewsultra/tmpl/default.php",
 		"/tmp/sublime-sftp-browse-1501137836/mapped/www/dhl.2metr.ru/libraries/joomla/filesystem/folder.php",
 		"/tmp/sublime-sftp-browse-1501138082/mapped/www/dhl.2metr.ru/configuration.php",
-		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/templates/konopatka/css/style.css",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/sftp-config.json",
 		"/media/iframe/C4142DAF142DA580/projects/konopatka/app/.gitignore",
 		"/media/iframe/C4142DAF142DA580/projects/dekor/.htaccess",
@@ -284,11 +286,11 @@
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 50.0
 	},
 	"find_in_files":
 	{
-		"height": 136.0,
+		"height": 139.0,
 		"where_history":
 		[
 			""
@@ -299,6 +301,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<div class=\"hr\"></div>",
+			"article-toolswrap",
+			"top",
+			"article-content",
+			"class=\"blog",
+			"modifydate",
+			"componentheading",
+			"article-toolswrap",
+			"article-content",
+			"modifydate",
+			"modChrome_jamodule",
+			"ja-boxct",
+			"nowrap=\"nowrap\"",
+			"foote",
+			"#contacts",
+			"contacts",
+			"header .menu-button",
+			"#",
 			".hr",
 			"=\"contentheading",
 			"article-toolswrap",
@@ -332,7 +352,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -341,15 +361,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10642,
+						"buffer_size": 20865,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8350,
-								8350
+								7212,
+								7212
 							]
 						],
 						"settings":
@@ -361,239 +381,8 @@
 								{
 									"1":
 									[
-										8429,
-										8434
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/dot.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										8264,
-										8266
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 5830.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/price.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8754,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2858,
-								2858
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										2859,
-										2862
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1954.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "templates/konopatka/html/com_content/article/default.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5608,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3925,
-								3925
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										4349,
-										4351
+										8391,
+										8392
 									]
 								},
 								"icon":
@@ -608,8 +397,8 @@
 								{
 									"1":
 									[
-										3804,
-										3806
+										7213,
+										7214
 									]
 								},
 								"unmatched":
@@ -618,26 +407,11 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -648,6 +422,36 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -657,22 +461,113 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
+								"bh_regex_content"
+							],
+							"expand_region_settings": "{\"stack\": [{\"end\": 5806, \"start\": 5801}], \"hash\": \"050e69ee575aefa43734072ce438c91e\"}",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4728.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "templates/konopatka/html/com_content/article/default.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4890,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1209,
+								1209
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
 							],
 							"expand_region_settings": "{\"stack\": [{\"start\": 3021, \"end\": 3029}], \"hash\": \"7ee2f2c9cea1fd2a5b03cee5b73854ea\"}",
 							"incomplete_sync": null,
@@ -682,269 +577,58 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1791.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "templates/konopatka/templateDetails.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4224,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1230,
-								1244
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1246,
-										1254
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1221,
-										1229
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 621.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "templates/konopatka/html/com_content/section/blog.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3942,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1207,
-								1207
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1677,
-										1682
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/dot.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1105,
-										1107
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 621.0,
+						"translation.y": 472.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "/media/iframe/C4142DAF142DA580/projects/konopatka/konopatka-fixed/index.html",
+					"buffer": 2,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9216,
+						"buffer_size": 1968,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										199,
+										210
+									],
+									[
+										494,
+										505
+									],
+									[
+										850,
+										861
+									],
+									[
+										1169,
+										1180
+									],
+									[
+										1586,
+										1603
+									],
+									[
+										1844,
+										1861
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								2525,
-								2519
+								1597,
+								1597
 							]
 						],
 						"settings":
@@ -965,33 +649,18 @@
 								{
 									"1":
 									[
-										2520,
-										2524
+										1811,
+										1812
 									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1002,6 +671,36 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1011,51 +710,42 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_regex_content"
 							],
+							"default_dir": "/media/iframe/C4142DAF142DA580/projects/konopatka/app",
+							"detect_indentation": false,
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1538.0,
+						"translation.y": 985.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "templates/konopatka/html/com_content/category/blog.php",
+					"buffer": 3,
+					"file": "templates/konopatka/html/com_content/frontpage/default_item.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4093,
+						"buffer_size": 6586,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1136,
-								1136
+								2534,
+								2534
 							]
 						],
 						"settings":
@@ -1067,8 +757,8 @@
 								{
 									"1":
 									[
-										1200,
-										1201
+										2534,
+										2535
 									]
 								},
 								"icon":
@@ -1083,8 +773,8 @@
 								{
 									"1":
 									[
-										1131,
-										1132
+										2516,
+										2517
 									]
 								},
 								"unmatched":
@@ -1093,26 +783,11 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1123,6 +798,36 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1132,22 +837,7 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_regex_content"
 							],
 							"incomplete_sync": null,
 							"remote_loading": false,
@@ -1156,27 +846,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 332.0,
+						"translation.y": 404.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "modules/mod_junewsultra/tmpl/videotpl.php",
+					"buffer": 4,
+					"file": "templates/konopatka/html/com_content/category/blog_item.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2752,
+						"buffer_size": 3681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1418,
-								1418
+								3681,
+								3681
 							]
 						],
 						"settings":
@@ -1188,15 +878,15 @@
 								{
 									"1":
 									[
-										2731,
-										2741
+										3677,
+										3680
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/dot.png",
+										"Packages/BracketHighlighter/icons/tag.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -1204,8 +894,8 @@
 								{
 									"1":
 									[
-										1256,
-										1263
+										2000,
+										2003
 									]
 								},
 								"unmatched":
@@ -1214,26 +904,11 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1244,6 +919,36 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1253,277 +958,236 @@
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
+								"bh_regex_content"
 							],
 							"incomplete_sync": null,
-							"open_with_edit": true,
 							"remote_loading": false,
 							"synced": false,
 							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 897.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "templates/konopatka/css/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10813,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								681,
-								681
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										683,
-										684
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										566,
-										567
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 632.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "templates/konopatka/js/1.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 629,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								462,
-								462
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										461,
-										462
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										451,
-										452
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content"
-							],
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 276.0,
+						"translation.y": 866.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/konopatka/html/com_content/category/blog.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3462,
+								3462
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										1696,
+										1698
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1772.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/konopatka/html/com_content/frontpage/default.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 3711,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2089.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1531,7 +1195,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -1566,13 +1230,13 @@
 	},
 	"output.sftp":
 	{
-		"height": 31.0
+		"height": 33.0
 	},
 	"pinned_build_system": "",
 	"project": "konopatka.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":

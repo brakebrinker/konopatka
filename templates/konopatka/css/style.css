@@ -78,6 +78,9 @@ ul span{
     display: inline-block;
     background: transparent;
 }
+.topline ul.sf-menu li > ul li {
+	display: block;
+}
 .topline ul.sf-menu a {
 	border: none;
 }
@@ -390,7 +393,7 @@ h2.textarea{
 	display:flex;
 }
 #contacts .textarea a,
-.topline .contacts a{
+.topline .contacts a {
 	display: block;
 }
 .gray{
@@ -565,6 +568,9 @@ footer nav a{
 footer .contacts{
 	margin-left: auto;
 }
+footer .contacts p{
+	margin:0;
+}
 footer .contacts .fa{
 	display:inline-block;
 	width:30px;
@@ -574,6 +580,7 @@ footer .contacts .fa{
 }
 footer .fa-mobile{font-size: 26px;}
 footer .fa-envelope-o{font-size: 18px;}
+footer .social p {margin: 0;}
 footer .social>:first-child,footer .contacts a:first-child{
 	display:block;
 	margin-bottom: 25px;

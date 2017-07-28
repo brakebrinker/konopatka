@@ -37,7 +37,8 @@
 		<position>contacts</position>
 		<position>asidemenu</position>
 		<position>asidevideo</position>
-		<position>onpagecontacts</position>
+		<position>social</position>
+		<position>submenu</position>
 		<position>breadcrumbs</position>
 		<position>banner</position>
 		<position>left</position>

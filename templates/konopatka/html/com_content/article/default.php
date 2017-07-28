@@ -21,13 +21,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<?php echo JHTML::_('icon.edit', $this->article, $this->params, $this->access); ?>
 	</div>
 <?php endif; ?>
-<div class="textarea head">
-    <div class="breadcrumbs">
-      <jdoc:include type="module" name="breadcrumbs" />
-    </div>
-	<?php
-	if (($this->params->get('show_create_date')) || (($this->params->get('show_author')) && ($this->article->author != ""))) :
-	?>
+	<?php if (($this->params->get('show_create_date')) || (($this->params->get('show_author')) && ($this->article->author != ""))) : ?>
 		<div class="date">
 		<?php if ($this->params->get('show_create_date')) : ?>
 			<?php echo JHTML::_('date', $this->escape($this->article->created), JText::_('DATE_FORMAT_LC2')) ?>
@@ -38,7 +32,10 @@ defined('_JEXEC') or die('Restricted access'); ?>
 			</span>
 		<?php endif; ?>
 		</div>
-</div>
+	<?php endif; ?>
+	<?php $menu = & JSite::getMenu();
+	if ($menu->getActive() != $menu->getDefault()) : ?>
+		</div>
 	<?php endif; ?>
 <?php if ($this->article->id == 47) :?>
 	<?php if ($this->params->get('show_title')) : ?>

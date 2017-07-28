@@ -101,7 +101,7 @@ function changeSizeImage(im) {
     <header>
         <div class="wrapper">
             <div class="topline">
-                <a href="index.html" class="logo"><img src="<?php echo $tmpTools->templateurl(); ?>/img/logo.png" alt=""></a>
+                <a href="<?php echo $this->baseurl ?>" class="logo"><img src="<?php echo $tmpTools->templateurl(); ?>/img/logo.png" alt=""></a>
                 <nav>
                     <jdoc:include type="modules" name="hornav" />
                 </nav>
@@ -112,21 +112,22 @@ function changeSizeImage(im) {
             </div>
             <div class="bottomline">
                 <span class="title">Конопатка деревянных домов</span>
-                <div>
-                    <a href="#" class="ramka">
-                        <i class="fa fa-home"></i>
-                        <span>цены на отделочные работы</span>
-                    </a>
-                    <a href="#" class="ramka">
-                        <i class="fa fa-mobile"></i>
-                        <span>как с нами связаться</span>
-                    </a>
-                    <a href="#" class="ramka">
-                        <i class="fa fa-photo"></i>
-                        <span>наши работы</span>
-                    </a>
-                </div>
-            </div>          
+<!--                 <div>
+    <a href="#" class="ramka">
+        <i class="fa fa-home"></i>
+        <span>цены на отделочные работы</span>
+    </a>
+    <a href="#" class="ramka">
+        <i class="fa fa-mobile"></i>
+        <span>как с нами связаться</span>
+    </a>
+    <a href="#" class="ramka">
+        <i class="fa fa-photo"></i>
+        <span>наши работы</span>
+    </a>
+</div> -->
+                <jdoc:include type="modules" name="submenu" />
+            </div>
         </div>
     </header>
     <div id="mean-container"></div>
@@ -140,35 +141,33 @@ function changeSizeImage(im) {
             </div>
         </aside>
         <main>
-            <jdoc:include type="component" />
+            <?php $menu = & JSite::getMenu();
+            if ($menu->getActive() != $menu->getDefault()) : ?>
+            <div class="textarea head">
+                <div class="breadcrumbs">
+                  <jdoc:include type="module" name="breadcrumbs" />
+                </div>
+            <?php endif ; ?>
+            <?php if ($menu->getActive() == $menu->getDefault()) : ?>
+                <div class="textarea">
+                    <jdoc:include type="component" />
+                </div>
+            <?php else : ?>
+                <jdoc:include type="component" />
+            <?php endif ; ?>
         </main>
     </div>
     <footer>
         <div class="wrapper">
             <h4>меню</h4>
-            <div class="hr"></div>
+            
             <div class="bottom-menu">
-                <nav>
-                    <a href="#">Услуги</a>
-                    <a href="#">Шлифовка</a>
-                    <a href="#">Окосячка</a>
-                    <a href="#">Цены</a>
-                    <a href="#">Работы</a>
-                    <a href="#">Конопатка</a>
-                    <a href="#">Видео</a>
-                    <a href="#">Окна ПВХ</a>
-                    <a href="#">Контакты</a>
-                </nav>
+                <jdoc:include type="modules" name="footer" style="xhtml" />
                 <div class="contacts">
                     <jdoc:include type="modules" name="contacts" />
                 </div>
                 <div class="social">
-                    <span>
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-youtube"></a>
-                    </span>
+                    <jdoc:include type="modules" name="social" />
                     <b>copyright@ 2017</b>
                 </div>
             </div>
