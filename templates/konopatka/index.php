@@ -67,6 +67,8 @@ if(isset($_GET['Itemid'])){
 <meta name="viewport" content="width=device-width; initial-scale=1.0" />    
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=cyrillic" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/slider/jquery.bxslider.css">
+<link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/superfish.css">
+<link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/meanmenu.min.css">
 <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/style.css">
 <link rel="stylesheet" href="<?php echo $tmpTools->templateurl(); ?>/css/font-awesome.css">
 
@@ -127,6 +129,7 @@ function changeSizeImage(im) {
             </div>          
         </div>
     </header>
+    <div id="mean-container"></div>
     <div class="wrapper flex">
         <aside>
             <nav>
@@ -140,190 +143,38 @@ function changeSizeImage(im) {
             <jdoc:include type="component" />
         </main>
     </div>
+    <footer>
+        <div class="wrapper">
+            <h4>меню</h4>
+            <div class="hr"></div>
+            <div class="bottom-menu">
+                <nav>
+                    <a href="#">Услуги</a>
+                    <a href="#">Шлифовка</a>
+                    <a href="#">Окосячка</a>
+                    <a href="#">Цены</a>
+                    <a href="#">Работы</a>
+                    <a href="#">Конопатка</a>
+                    <a href="#">Видео</a>
+                    <a href="#">Окна ПВХ</a>
+                    <a href="#">Контакты</a>
+                </nav>
+                <div class="contacts">
+                    <jdoc:include type="modules" name="contacts" />
+                </div>
+                <div class="social">
+                    <span>
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-youtube"></a>
+                    </span>
+                    <b>copyright@ 2017</b>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<!-- BEGIN: HEADER -->
-<div id="ja-headerwrap">
-<div id="ja-header" class="clearfix">
-	<div id="ja-header-inner">
-	<?php 
-	$siteName = $tmpTools->sitename(); 
-	if ($tmpTools->getParam('logoType')=='image') { ?>
-	<?if($_SERVER['REQUEST_URI'] == '/'):?>
-		<h1 class="logo main_page">
-			<div class="logo-text-main "><span><?php echo $siteName; ?></span></div>
-		</h1>
-	<?else:?>
-		<h1 class="logo">
-			<a href="/" title="<?php echo $siteName; ?>"><span><?php echo $siteName; ?></span></a>
-		</h1>
-	<?endif;?>
-	<?php } else { 
-	$logoText = (trim($tmpTools->getParam('logoText'))=='') ? $config->sitename : $tmpTools->getParam('logoText');
-	$sloganText = (trim($tmpTools->getParam('sloganText'))=='') ? JText::_('SITE SLOGAN') : $tmpTools->getParam('sloganText');	?>
-	<div class="logo-text">
-		<p class="site-slogan"><?php echo $sloganText;?></p>
-		<h1>
-			<a href="/" title="<?php echo $siteName; ?>"><span><?php echo $logoText; ?></span></a>	
-		</h1>
-	</div>
-	<?php } ?>
-
-	<?php if ($this->countModules('user4')) { ?>
-	<div id="ja-search">
-		<jdoc:include type="modules" name="user4" style="raw" />
-	</div>	
-	<?php } ?>
-	
-	<div class="header-phone">
-		<a title="Позвонить" href="tel:+789157135731">8 915 713 57 31</a>
-	</div>
-	
-	</div>
-</div>
-</div>
-<!-- END: HEADER -->
-
-<!-- BEGIN: MAIN NAVIGATION -->
-<?php if ($tmpTools->getParam('ja_menu') != 'none') : ?>
-<div id="ja-mainnavwrap">
-<div id="ja-mainnav" class="clearfix">
-	<?php if ($jamenu) $jamenu->genMenu (0); ?>
-</div>
-</div>
-<?php endif; ?>
-<!-- END: MAIN NAVIGATION -->
-
-<div id="ja-containerwrap<?php echo $divid; ?>" class="clearfix">
-<div id="ja-container" class="clearfix">
-
-	<!-- BEGIN: CONTENT -->
-	<div id="ja-contentwrap" class="clearfix">
-
-		<div id="ja-content">
-
-			<jdoc:include type="message" />
-   		
-  		<?php if(!$tmpTools->isFrontPage()) : ?>
-  		<div id="ja-current-content" class="clearfix">
-  			<!-- BEGIN: PATHWAY -->
-				<?php if(!$tmpTools->isFrontPage()) : ?>
-				<div id="ja-pathway">
-				  <jdoc:include type="module" name="breadcrumbs" />
-				</div>
-				<?php endif; ?>
-				<!-- END: PATHWAY -->
-  			<jdoc:include type="component" />
-  		</div>
-  		<?php endif; ?>
-    		
-  		<!-- BEGIN: JAZIN -->
-      <div id="jazin-fp">
-      	<jdoc:include type="modules" name="ja-news" style="raw" />
-      </div>
-      <!-- END: JAZIN -->    		
-
-			<?php if($this->countModules('banner')) : ?>
-			<!-- BEGIN: BANNER -->
-			<div id="ja-banner">
-				<jdoc:include type="modules" name="banner" />
-			</div>
-			<!-- END: BANNER -->
-			<?php endif; ?>
-
-		</div>
-
-	</div>
-	<!-- END: CONTENT -->
-	
-	<?php if ($ja_left || $ja_right || $ja_masscol)  { ?>	
-	<div id="ja-colwrap">
-	
-		<?php if ($ja_masscol) { ?>
-		<!-- BEGIN: MASSCOL -->
-		<div id="ja-colmass" class="clearfix">
-		<div class="ja-innerpad">
-			<jdoc:include type="modules" name="user5" style="jamodule" />
-    </div>
-    </div>
-    <?php } ?>
-  
-  	<?php if ($ja_left) { ?>
-	  <!-- BEGIN: LEFT COLUMN -->
-		<div id="ja-col1">
-		<div class="ja-innerpad">
-
-			<?php if ($hasSubnav) : ?>
-			<div id="ja-subnav" class="moduletable_menu">
-				<h3>On this page</h3>
-				<?php if ($jamenu) $jamenu->genMenu (1,1);	?>
-			</div>
-			<?php endif; ?>
-		
-			<jdoc:include type="modules" name="left" style="jamodule" />
-
-		</div>
-		</div>
-		<!-- END: LEFT COLUMN -->
-		<?php } ?>
-  
-  <?php if ($ja_right) { ?>
-	<!-- BEGIN: RIGHT COLUMN -->
-	<div id="ja-col2">
-	<div class="ja-innerpad">
-		<jdoc:include type="modules" name="right" style="jamodule" />
-	</div></div><br />
-	<!-- END: RIGHT COLUMN -->
-	<?php } ?>
-	
-	</div>
-	<?php } ?>
-
-</div></div>
-
-	<?php
-	$spotlight = array ('user1','user2','user7','user8');
-	$botsl = $tmpTools->calSpotlight ($spotlight,$tmpTools->isOP()?100:99.9);
-	if( $botsl ) {
-	?>
-	<!-- BEGIN: BOTTOM SPOTLIGHT-->
-	<div id="ja-botslwrap">
-    <div id="ja-botsl" class="clearfix">
-	  
-	  <?php if( $this->countModules('user7') ) {?>
-	  <div class="ja-box<?php echo $botsl['user7']['class']; ?>" style="width: <?php echo $botsl['user7']['width']; ?>;">
-			<jdoc:include type="modules" name="user7" style="xhtml" />
-	  </div>
-	  <?php } ?>
-	
-	  <?php if( $this->countModules('user8') ) {?>
-	  <div class="ja-box<?php echo $botsl['user8']['class']; ?>" style="width: <?php echo $botsl['user8']['width']; ?>;">
-			<jdoc:include type="modules" name="user8" style="xhtml" />
-	  </div>
-	  <?php } ?>
-
-	</div></div>
-    
-    <div class="up_footer">
-   
-    <div class="footer_menu"> 
-        <?php if( $this->countModules('user1') ) { ?> <jdoc:include type="modules" name="user1" style="xhtml" />  <?php } ?>
-    </div>
-      
-    <div class="copy_rights">
-    <?php if( $this->countModules('user2') ) { ?> <jdoc:include type="modules" name="user2" style="xhtml" />  <?php } ?>
-    </div>
-    </div>
-
-	<!-- END: BOTTOM SPOTLIGHT 2 -->
-	<?php } ?>
-<!-- BEGIN: FOOTER -->
-<div id="ja-footerwrap" class="clearfix">
-
-<div id="ja-footer">
-<?php if( $this->countModules('footer') ) {?>
-			<jdoc:include type="modules" name="footer" style="xhtml" />
-	  <?php } ?>
-</div></div>
 <!-- END: FOOTER -->
 <jdoc:include type="modules" name="debug" />
 <!-- jquery -->
@@ -331,7 +182,19 @@ function changeSizeImage(im) {
 <!-- JS -->
 <script src="<?php echo $tmpTools->templateurl(); ?>/slider/jquery.bxslider.js"></script>
 <script src="<?php echo $tmpTools->templateurl(); ?>/js/1.js"></script>     
+<script src="<?php echo $tmpTools->templateurl(); ?>/js/superfish.js"></script>     
+<script src="<?php echo $tmpTools->templateurl(); ?>/js/jquery.meanmenu.js"></script>     
 
+<script>
+    jQuery(document).ready(function() {
+        jQuery('ul.sf-menu').superfish();
+    });
+</script>
+<script>
+jQuery(document).ready(function () {
+    jQuery('header nav').meanmenu();
+});
+</script>
 </body>
 
 </html>

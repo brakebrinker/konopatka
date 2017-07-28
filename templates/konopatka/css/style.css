@@ -67,18 +67,52 @@ ul li{
 ul span{
 	color:#282828;
 }
-.topline ul#mainlevel {
+.topline ul.sf-menu {
     margin: 0;
     padding: 0;
     max-width: inherit;
 }
-.topline ul#mainlevel li {
+.topline ul.sf-menu li {
     margin: 0;
     padding: 0;
     display: inline-block;
+    background: transparent;
 }
-.topline ul#mainlevel li a {
+.topline ul.sf-menu a {
+	border: none;
+}
+.topline ul.sf-menu li a span {
 	color: #fff;
+}
+ul.menu.sf-menu ul {
+    background: rgba(0, 0, 0, 0.55);
+}
+.mean-container .mean-bar {
+    background-color: transparent;
+    margin-top: -50px;
+}
+.mean-container .mean-nav {
+    background-color: #f5ede1;
+}
+.mean-container .mean-nav ul {
+	max-width: 100%;
+}
+nav.mean-nav ul li {
+    margin: 0;
+}
+.mean-container .mean-nav ul li a {
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(197, 197, 197, 0.5);
+}
+.mean-container .mean-nav ul li a.mean-expand {
+    height: 26px;
+    background: rgba(66, 66, 66, 0.1);
+    color: #282828;
+}
+.mean-container .mean-nav ul li a.mean-expand:hover {
+	background: rgba(66, 66, 66, 0.1);
 }
 .title{
 	font-size: 60px;
@@ -355,6 +389,10 @@ h2.textarea{
 #contacts{
 	display:flex;
 }
+#contacts .textarea a,
+.topline .contacts a{
+	display: block;
+}
 .gray{
 	background-color: #f6f6f6;
 	font-size: 20px;
@@ -453,6 +491,7 @@ tbody tr:nth-child(2n+1) td{
 	justify-content:space-between;
 	align-items:center;
 	flex-wrap:wrap;
+	margin-top: 70px;
 }
 .info>*{
 	margin-bottom: 15px;
@@ -535,7 +574,7 @@ footer .contacts .fa{
 }
 footer .fa-mobile{font-size: 26px;}
 footer .fa-envelope-o{font-size: 18px;}
-footer .social>:first-child,footer .contacts>:first-child{
+footer .social>:first-child,footer .contacts a:first-child{
 	display:block;
 	margin-bottom: 25px;
 }
@@ -660,11 +699,11 @@ footer .social>:first-child,footer .contacts>:first-child{
 		box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.1);
 		border-bottom:0;
 	}
-	header .menu-button{
+/*	header .menu-button{
 		display:block;
 		font-size: 30px;
 		cursor:pointer;
-	}
+	}*/
 	.bottomline{
 		display:none;
 	}

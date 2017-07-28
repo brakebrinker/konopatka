@@ -27,11 +27,11 @@ $('.slider').bxSlider({
   pagerCustom: '#bx-pager'
 });
 //Мобильное меню
-$('.menu-button').click(function(){
-	$('header nav').slideToggle();
-});
-$(window).resize(function(){
-	$('header nav').css('display', '');
+// $('.menu-button').click(function(){
+// 	$('header nav').slideToggle();
+// });
+// $(window).resize(function(){
+// 	$('header nav').css('display', '');
 	
-});
+// });
 

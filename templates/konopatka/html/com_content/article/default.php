@@ -68,7 +68,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 		<?php echo $this->article->text; ?>
 	</div>
 <?php else : ?>
-	<?php if (!$this->article->id == 48) : ?>
 	<div class="textarea">
 		<?php if ($this->params->get('show_title')) : ?>
 		<h2 class="<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
@@ -81,19 +80,6 @@ defined('_JEXEC') or die('Restricted access'); ?>
 			<?php endif; ?>
 		</h2>
 		<?php endif; ?>
-	<?php else : ?>
-		<?php if ($this->params->get('show_title')) : ?>
-		<h2 class="<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>" style="padding: 0 50px;margin-bottom: 10px;">
-			<?php if ($this->params->get('link_titles') && $this->article->readmore_link != '') : ?>
-			<a href="<?php echo $this->escape($this->article->readmore_link); ?>" class="contentpagetitle<?php echo $this->escape($this->params->get( 'pageclass_sfx' )); ?>">
-				<?php echo $this->escape($this->article->title); ?>
-			</a>
-			<?php else : ?>
-				<?php echo $this->escape($this->article->title); ?>
-			<?php endif; ?>
-		</h2>
-		<?php endif; ?>
-	<?php endif; ?>
 		<?php  if (!$this->params->get('show_intro')) :
 			echo $this->article->event->afterDisplayTitle;
 		endif; ?>
